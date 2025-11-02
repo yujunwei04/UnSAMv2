@@ -1,6 +1,6 @@
 <p align="center">
 
-  <h1 align="center">Self-Supervised Learning Enables Segment Anything at Any Granularity</h1>
+  <h1 align="center">UnSAMv2: Self-Supervised Learning Enables Segment Anything at Any Granularity</h1>
   <p align="center">
     <a href="https://yujunwei04.github.io/"><strong>Junwei Yu</strong></a>,
     <a href="https://people.eecs.berkeley.edu/~trevor/"><strong>Trevor Darrell</strong></a>,
