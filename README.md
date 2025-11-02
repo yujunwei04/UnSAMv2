@@ -8,7 +8,7 @@
   </p>
   <p align="center">
     <strong>UC Berkeley</strong><br />
-    <small><em>* Corresponding author</em></small>
+    <small style="font-size:0.75em;"><em>* Corresponding author</em></small>
   </p>
 </p>
 
@@ -28,7 +28,7 @@
 ## Method Overview 💡
 UnSAMv2 has two stages. (1) We generate pseudo mask-granularity pairs with granularity-aware divide-and-conquer. (2) We utilize these unsupervised data to finetune SAM-2 with granularity module.
 
-### 1. Granularity-aware Divide-and-conquer ✌️
+### 1. Granularity-Aware Divide-and-Conquer ✌️
 
 ### 2. UnSAMv2 Granularity Training 🔥
 
@@ -42,6 +42,6 @@ UnSAMv2 has two stages. (1) We generate pseudo mask-granularity pairs with granu
 This codebase is built on SAM-2, UnSAM, CutLER, DINOv3, HQ-SAM, and GraCo. We sincely appreciate the authors for open-sourcing their code.
 
 ## Contact ☎️
-If you have any general questions, feel free to email us at yujunwei04@berkeley.edu and xdwang@eecs.berkeley.edu. If you have code questions, please open an issue in this repo as your question may help others.
+If you have any general questions, feel free to email us at yujunwei04@berkeley.edu and xdwang@eecs.berkeley.edu. If you have code questions, we encourage you to open an issue in this repo as your question may help others.
 
 ## Citation ✨
