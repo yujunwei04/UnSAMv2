@@ -45,16 +45,16 @@ UnSAMv2 has two stages. (1) We generate pseudo mask-granularity pairs with granu
 
 ## Model Zoo 🥳
 
-| Method | NoC<sub>80</sub> ↓ | NoC<sub>90</sub> ↓ | 1-IoU ↑ | AR<sub>1000</sub> ↑ |
-| --- | --- | --- | --- | --- |
-| SimpleClick | 3.32 | 4.87 | 60.2 | - |
-| UnSAM | - | - | - | 39.2 |
-| GraCo* | 2.35 | 3.42 | 74.4 | - |
-| SAM-2 | 2.44 | 3.63 | 69.0 | 49.6 |
-| UnSAMv2* | 2.28 | 3.40 | 79.3 | 64.8 |
-| UnSAMv2+* | 2.07 | 3.10 | 81.7 | 68.1 |
+UnSAMv2 achieves state-of-the-art performance on interactive segmentation and whole image segmentation by finetuning SAM-2 on pseudo-labeled mask-granularity paris on 6,000 images. For interactive segmentation, we report averaged Number of clicks (NoC) and Intersection of Union with 1 click(1-IoU) across 5 datasets (GrabCut, Berkeley, DAVIS, SA-1B, PartImageNet). For whole image segmentation, we report Average Recall (AR) across 5 datasets (COCO, LVIS, ADE20K, Entity, SA-1B).
 
-<sub>* search for optimal granularity across [0.1, 1.0] with step 0.1.</sub>
+| Method | Models | NoC<sub>80</sub> ↓ | NoC<sub>90</sub> ↓ | 1-IoU ↑ | AR<sub>1000</sub> ↑ |
+| --- | --- | --- | --- | --- | --- |
+| SimpleClick | - | 3.32 | 4.87 | 60.2 | - |
+| UnSAM | - | - | - | - | 39.2 |
+| GraCo | - | 2.35 | 3.42 | 74.4 | - |
+| SAM-2 | - | 2.44 | 3.63 | 69.0 | 49.6 |
+| UnSAMv2 | TODO | 2.28 | 3.40 | 79.3 | 64.8 |
+| UnSAMv2+ | TODO | 2.07 | 3.10 | 81.7 | 68.1 |
 
 ## Evaluation 😎
 
