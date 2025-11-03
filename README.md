@@ -38,14 +38,27 @@ UnSAMv2 has two stages. (1) We generate pseudo mask-granularity pairs with granu
 ### 2. Segment Anything at Any Granularity 🔥
 
 ### UnSAMv2: Inference Demo for Interative Image Segmentation
+<div align="center">
+  <img src="./assets/int_demo.png" alt="" style="width: 100%; margin: 10px 0;">
+</div>
 
 ### UnSAMv2: Inference Demo for Whole Image Segmentation
+<div align="center">
+  <img src="./assets/whole_seg.png" alt="" style="width: 100%; margin: 10px 0;">
+</div>
 
 ### UnSAMv2: Inference Demo for Video Segmentation
+<div align="center">
+  <img src="./assets/video_demo.png" alt="" style="width: 100%; margin: 10px 0;">
+</div>
 
 ## Model Zoo 🥳
 
-UnSAMv2 achieves state-of-the-art performance on interactive segmentation and whole image segmentation by finetuning SAM-2 on pseudo-labeled mask-granularity paris on 6,000 images. For interactive segmentation, we report averaged Number of clicks (NoC) and Intersection of Union with 1 click(1-IoU) across 5 datasets (GrabCut, Berkeley, DAVIS, SA-1B, PartImageNet). For whole image segmentation, we report Average Recall (AR) across 5 datasets (COCO, LVIS, ADE20K, Entity, SA-1B).
+UnSAMv2 achieves state-of-the-art performance on interactive segmentation and whole image segmentation by finetuning SAM-2 on pseudo-labeled mask-granularity paris on 6,000 images. 
+
+For interactive segmentation, we report averaged Number of clicks (NoC) and Intersection of Union with 1 click(1-IoU) across 5 datasets (GrabCut, Berkeley, DAVIS, SA-1B, PartImageNet). 
+
+For whole image segmentation, we report Average Recall (AR) across 5 datasets (COCO, LVIS, ADE20K, Entity, SA-1B).
 
 | Method | Models | NoC<sub>80</sub> ↓ | NoC<sub>90</sub> ↓ | 1-IoU ↑ | AR<sub>1000</sub> ↑ |
 | --- | --- | --- | --- | --- | --- |
