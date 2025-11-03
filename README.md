@@ -44,7 +44,7 @@ UnSAMv2 has two stages. (1) We generate pseudo mask-granularity pairs with granu
 
 ### UnSAMv2: Inference Demo for Whole Image Segmentation
 <div align="center">
-  <img src="./assets/whole_seg.png" alt="" style="width: 100%; margin: 10px 0;">
+  <img src="./assets/whole_demo.png" alt="" style="width: 100%; margin: 10px 0;">
 </div>
 
 ### UnSAMv2: Inference Demo for Video Segmentation
