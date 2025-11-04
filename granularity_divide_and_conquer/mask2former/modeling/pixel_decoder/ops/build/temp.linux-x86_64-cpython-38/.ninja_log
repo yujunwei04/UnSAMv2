@@ -1,0 +1,4 @@
+# ninja log v5
+0	8230	1754884988669219599	/home/yujunwei/depth_divide_conquer/mask2former/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-38/home/yujunwei/depth_divide_conquer/mask2former/modeling/pixel_decoder/ops/src/cpu/ms_deform_attn_cpu.o	afc019d5ed8ea7aa
+1	19611	1754885000011292116	/home/yujunwei/depth_divide_conquer/mask2former/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-38/home/yujunwei/depth_divide_conquer/mask2former/modeling/pixel_decoder/ops/src/cuda/ms_deform_attn_cuda.o	22927d8f34b55c17
+1	22640	1754885003046311523	/home/yujunwei/depth_divide_conquer/mask2former/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-38/home/yujunwei/depth_divide_conquer/mask2former/modeling/pixel_decoder/ops/src/vision.o	f49836a5b3624e08

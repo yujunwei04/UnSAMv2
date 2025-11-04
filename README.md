@@ -29,14 +29,21 @@
 - 11/02/2025: We released UnSAMv2.
 
 ## Installation ⚙️
+We provide installation instructions [here](INSTALL.md).
 
 ## Method Overview 💡
 UnSAMv2 has two stages. (1) We generate pseudo mask-granularity pairs with granularity-aware divide-and-conquer. (2) We utilize these unsupervised data to finetune SAM-2 with granularity module.
 
 ### 1. Granularity-Aware Divide-and-Conquer ✌️
+To run granularity-aware divide-and-conquer, please download CutLER's weights [here](http://dl.fbaipublicfiles.com/cutler/checkpoints/cutler_cascade_final.pth)
+
+Then, specify the input, output, and checkpoint path in the [script](./granularity_divide_and_conquer/run_gra_dico.sh) and run
+```bash
+cd granularity_divide_and_conquer
+bash run_gra_dico.sh
+```
 
 ### 2. Segment Anything at Any Granularity 🔥
-
 ### UnSAMv2: Inference Demo for Interative Image Segmentation
 <div align="center">
   <img src="./assets/int_demo.png" alt="" style="width: 100%; margin: 10px 0;">
@@ -56,9 +63,9 @@ UnSAMv2 has two stages. (1) We generate pseudo mask-granularity pairs with granu
 
 UnSAMv2 achieves state-of-the-art performance on interactive segmentation and whole image segmentation by finetuning SAM-2 on pseudo-labeled mask-granularity paris on 6,000 images. 
 
-For interactive segmentation, we report averaged Number of clicks (NoC) and Intersection of Union with 1 click(1-IoU) across 5 datasets (GrabCut, Berkeley, DAVIS, SA-1B, PartImageNet). 
+For interactive segmentation, we report averaged Number of clicks (NoC) and Intersection of Union with 1 click(1-IoU) across 5 datasets: GrabCut, Berkeley, DAVIS, SA-1B, PartImageNet. 
 
-For whole image segmentation, we report Average Recall (AR) across 5 datasets (COCO, LVIS, ADE20K, Entity, SA-1B).
+For whole image segmentation, we report Average Recall (AR) on 5 datasets: COCO, LVIS, ADE20K, Entity, SA-1B.
 
 | Method | Models | NoC<sub>80</sub> ↓ | NoC<sub>90</sub> ↓ | 1-IoU ↑ | AR<sub>1000</sub> ↑ |
 | --- | --- | --- | --- | --- | --- |
@@ -70,11 +77,13 @@ For whole image segmentation, we report Average Recall (AR) across 5 datasets (C
 | UnSAMv2+ | TODO | 2.07 | 3.10 | 81.7 | 68.1 |
 
 ## Evaluation 😎
+## Interactive Segmentation
+## Whole Image Segmentation
 
 ## License 📋
 
 ## Acknowledgements 🙏
-This codebase is built on UnSAM, SAM-2, CutLER, DINOv3, HQ-SAM, and GraCo. We sincely appreciate the authors for open-sourcing their code.
+This codebase is built on [UnSAM](https://github.com/frank-xwang/UnSAM), [SAM-2](https://github.com/facebookresearch/sam2), [CutLER](https://github.com/facebookresearch/CutLER), [DINOv3](https://github.com/facebookresearch/dinov3), [HQ-SAM](https://github.com/SysCV/sam-hq), and [GraCo](https://github.com/Zhao-Yian/GraCo). We sincerely appreciate the authors for open-sourcing their code.
 
 ## Contact ☎️
 If you have any general questions, feel free to email us at yujunwei04@berkeley.edu and xdwang@eecs.berkeley.edu. If you have code questions, we encourage you to open an issue in this repo as your question may help others.
