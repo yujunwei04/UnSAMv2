@@ -36,16 +36,6 @@ def img_from_base64(imagestring):
     image = Image.open(image).convert("RGB")
     return image
 
-    # jpgbytestring = base64.b64decode(imagestring)
-    # nparr = np.frombuffer(jpgbytestring, np.uint8)
-    # try:
-    #     r = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    #     # r = cv2.cvtColor(r, cv2.COLOR_BGR2RGB)
-    #     return r
-    # except:
-    #     return None
-
-
 def generate_lineidx(filein, idxout):
     assert not os.path.isfile(idxout)
     with open(filein, 'r') as tsvin, open(idxout, 'w') as tsvout:

@@ -115,9 +115,9 @@ def cv2_img_from_base64(imagestring):
     jpgbytestring = base64.b64decode(imagestring)
     image = BytesIO(jpgbytestring)
     image = Image.open(image).convert("RGB")
-    image = _apply_exif_orientation(image)  # 保持原有的 EXIF 处理逻辑
-    image = np.array(image)  # 转换为 numpy 数组（默认是 RGB 格式）
-    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)  # 转换为 BGR 格式
+    image = _apply_exif_orientation(image)
+    image = np.array(image)
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     return image
 
 
@@ -234,11 +234,10 @@ class SamInstanceTSVDatasetMapper:
         Convert a PyTorch tensor (C, H, W) to an OpenCV-compatible image (H, W, C) in BGR format.
         """
         if isinstance(image_tensor, torch.Tensor):  
-            image_np = image_tensor.cpu().numpy()  # 转为 NumPy 数组
-            image_np = np.transpose(image_np, (1, 2, 0))  # 变换通道顺序 (H, W, C)
-            image_np = (image_np * 255).astype(np.uint8)  # 归一化到 0-255 范围
+            image_np = image_tensor.cpu().numpy()
+            image_np = np.transpose(image_np, (1, 2, 0))
+            image_np = (image_np * 255).astype(np.uint8)
             
-            # **转换 RGB → BGR，使其和 cv2.imread() 读取的格式一致**
             image_np = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
             return image_np
         else:
@@ -260,7 +259,6 @@ class SamInstanceTSVDatasetMapper:
             tsv_info = [s.strip() for s in fp.readline().split('\t')]
 
         dataset_dict = json.loads(tsv_info[1])
-        # Junwei: need to check this !!
         image = cv2_img_from_base64(tsv_info[-1])
 
         # match the dataset_dict with model input
@@ -269,84 +267,10 @@ class SamInstanceTSVDatasetMapper:
         dataset_dict["image_id"] = dataset_dict["image"]["id"]
 
         # match with default coco dataloader
-        # only support polygon, needs to change rle to polygon
-        # polygon_annotations = []
         for ann in dataset_dict["annotations"]:
             ann["category_id"] = 0
-        
-        # limit number of selected masks # change this !!!
-        # if len(dataset_dict["annotations"]) > 10000:
-        #     dataset_dict["annotations"] = np.random.choice(dataset_dict["annotations"], 500, replace=False)
 
-        # del dataset_dict['info']
-        # del dataset_dict['licenses']
-        # del dataset_dict['categories']
-        # del dataset_dict['image']
-
-        # utils.check_image_size(dataset_dict, image)
-
-        # # TODO: get padding mask
-        # # by feeding a "segmentation mask" to the same transforms
-        # padding_mask = np.ones(image.shape[:2])
-
-        # image, transforms = T.apply_transform_gens(self.tfm_gens, image)
-        # # the crop transformation has default padding value 0 for segmentation
-        # padding_mask = transforms.apply_segmentation(padding_mask)
-        # padding_mask = ~ padding_mask.astype(bool)
-
-        image_shape = image.shape[:2]  # h, w
-
-        # Pytorch's dataloader is efficient on torch.Tensor due to shared-memory,
-        # but not efficient on large generic data structures due to the use of pickle & mp.Queue.
-        # Therefore it's important to use torch.Tensor.
-        # dataset_dict["image"] = self.tensor_to_cv2(torch.as_tensor(np.ascontiguousarray(image.transpose(2, 0, 1))))
+        image_shape = image.shape[:2]
         dataset_dict["image"] = image
-        
-        # dataset_dict["padding_mask"] = torch.as_tensor(np.ascontiguousarray(padding_mask))
-
-        # if not self.is_train:
-        #     # USER: Modify this if you want to keep them for some reason.
-        #     dataset_dict.pop("annotations", None)
-        #     return dataset_dict
-        # if True:
-        #     if "annotations" in dataset_dict:
-                # USER: Modify this if you want to keep them for some reason.
-                # for anno in dataset_dict["annotations"]:
-                #     # Let's always keep mask
-                #     # if not self.mask_on:
-                #     #     anno.pop("segmentation", None)
-                #     anno.pop("keypoints", None)
-                #     anno["bbox_mode"] = BoxMode.XYXY_ABS
-
-                # USER: Implement additional transformations if you have other types of data
-                # annos = [
-                #     utils.transform_instance_annotations(obj, transforms, image_shape)
-                #     for obj in dataset_dict.pop("annotations")
-                #     if obj.get("iscrowd", 0) == 0
-                # ]
-                # annos = dataset_dict["annotations"]
-
-                # instances = utils.annotations_to_instances(annos, image_shape, mask_format="bitmask")
-
-                # # After transforms such as cropping are applied, the bounding box may no longer
-                # # tightly bound the object. As an example, imagine a triangle object
-                # # [(0,0), (2,0), (0,2)] cropped by a box [(1,0),(2,2)] (XYXY format). The tight
-                # # bounding box of the cropped triangle should be [(1,0),(2,1)], which is not equal to
-                # # the intersection of original bounding box and the cropping box.
-                # instances.gt_boxes = instances.gt_masks.get_bounding_boxes()
-
-                # # Need to filter empty instances first (due to augmentation)
-                # instances = utils.filter_empty_instances(instances)
-
-                # # Generate masks from polygon
-                # h, w = instances.image_size
-                # # image_size_xyxy = torch.as_tensor([w, h, w, h], dtype=torch.float)
-
-                # if hasattr(instances, 'gt_masks'):
-                #     gt_masks = instances.gt_masks
-                #     # gt_masks = convert_coco_poly_to_mask(gt_masks.polygons, h, w)
-                #     gt_masks = gt_masks.tensor
-                #     instances.gt_masks = gt_masks
-                # dataset_dict["instances"] = instances
 
         return dataset_dict
