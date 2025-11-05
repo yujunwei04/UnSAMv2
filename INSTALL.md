@@ -28,12 +28,12 @@ sh make.sh
 
 - Setup SAM-2
 ```bash
-# We use sam2.1_hiera_small
 cd sam2
-pip install -e .
+pip install -e ".[notebooks]"
 
 # Ignore the ERROR: detectron2 0.6 requires iopath<0.1.10,>=0.1.7, but you have iopath 0.1.10 which is incompatible.
 
+# We use sam2.1_hiera_small
 cd checkpoints
 bash download_ckpts.sh
 cd ../..

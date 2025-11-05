@@ -17,7 +17,7 @@
   |
   <a href="https://arxiv.org/abs/111"><strong>ArXiv (coming soon)</strong></a>
   |
-  <a href="https://x.com/111"><strong>Demo 😊 (TODO)</strong></a>
+  <a href="https://x.com/111"><strong>HF Demo 😊 (coming soon)</strong></a>
 </h3>
 
 <div align="center">
@@ -26,7 +26,7 @@
 </div>
 
 ## News 🎉
-- 11/02/2025: We released UnSAMv2.
+- 11/2025: We released UnSAMv2.
 
 ## Installation ⚙️
 We provide installation instructions [here](INSTALL.md).
@@ -61,7 +61,7 @@ bash run_gra_dico.sh
 
 ## Model Zoo 🥳
 
-UnSAMv2 achieves state-of-the-art performance on interactive segmentation and whole image segmentation by finetuning SAM-2 on pseudo-labeled mask-granularity paris on 6,000 images. 
+UnSAMv2 achieves state-of-the-art performance on interactive segmentation and whole image segmentation by finetuning SAM-2 with pseudo-labeled mask-granularity pairs on 6,000 images. 
 
 For interactive segmentation, we report averaged Number of clicks (NoC) and Intersection of Union with 1 click(1-IoU) across 5 datasets: GrabCut, Berkeley, DAVIS, SA-1B, PartImageNet. 
 
@@ -73,12 +73,12 @@ For whole image segmentation, we report Average Recall (AR) on 5 datasets: COCO,
 | UnSAM | - | - | - | - | 39.2 |
 | GraCo | - | 2.35 | 3.42 | 74.4 | - |
 | SAM-2 | - | 2.44 | 3.63 | 69.0 | 49.6 |
-| UnSAMv2 | TODO | 2.28 | 3.40 | 79.3 | 64.8 |
-| UnSAMv2+ | TODO | 2.07 | 3.10 | 81.7 | 68.1 |
+| UnSAMv2 | TODO | 2.28 | 3.40 | 79.3 | 68.3 |
+| UnSAMv2+ | TODO | 2.07 | 3.10 | 81.7 | 74.1 |
 
 ## Evaluation 😎
-## Interactive Segmentation
-## Whole Image Segmentation
+### Interactive Segmentation
+### Whole Image Segmentation
 
 ## License 📋
 
