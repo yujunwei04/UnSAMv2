@@ -9,6 +9,9 @@ git clone https://github.com/yujunwei04/UnSAMv2.git
 cd UnSAMv2
 pip install -r requirements.txt
 ```
+
+DINOv3 and Detectron2 are only used in granularity divide-and-conquer pipeline. Feel free to skip them if you just want to try UnSAMv2 inference.
+
 - Setup DINOv3
 ```bash
 cd granularity_divide_and_conquer
@@ -31,7 +34,7 @@ sh make.sh
 cd sam2
 pip install -e ".[notebooks]"
 
-# Ignore the ERROR: detectron2 0.6 requires iopath<0.1.10,>=0.1.7, but you have iopath 0.1.10 which is incompatible.
+# Ignore the ERROR: "detectron2 0.6 requires iopath<0.1.10,>=0.1.7, but you have iopath 0.1.10 which is incompatible."
 
 # We use sam2.1_hiera_small
 cd checkpoints

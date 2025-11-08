@@ -17,7 +17,7 @@
   |
   <a href="https://arxiv.org/abs/111"><strong>ArXiv (coming soon)</strong></a>
   |
-  <a href="https://x.com/111"><strong>HF Demo 😊 (coming soon)</strong></a>
+  <a href="https://huggingface.co/spaces/yujunwei04/UnSAMv2"><strong>HF Demo 😊</strong></a>
 </h3>
 
 <div align="center">
@@ -27,6 +27,22 @@
 
 ## News 🎉
 - 11/2025: We released UnSAMv2.
+
+## Hugging Face Gradio Demo 🚀
+- `app.py` exposes an interactive Gradio Blocks UI for point-based image segmentation with granularity control. The script automatically tries to use Meta's SAM-2 backbone plus our UnSAMv2 LoRA weights.
+- Local run:
+  1. Follow [INSTALL.md](INSTALL.md) (or `cd sam2 && pip install -e .`) so SAM-2 and PyTorch deps are available.
+  2. Install the extra UI deps: `pip install -r requirements.txt` (this pulls in `gradio` and `spaces`).
+  3. Make sure `sam2/checkpoints/unsamv2_plus_ckpt.pt` exists (or set `UNSAMV2_CKPT=/path/to/ckpt.pt`).
+  4. Launch with `python app.py` and open `http://localhost:7860`.
+- Hugging Face Spaces (ZeroGPU mode):
+  1. Create a new **Gradio** Space with CPU hardware (e.g., `cpu-basic`). Upload this repo (including `app.py`, `requirements.txt`, `sam2/**`, and the checkpoint).
+  2. In the Space *Settings → ZeroGPU* panel, enable ZeroGPU. The app will request a GPU on each segmentation call via `@spaces.GPU`; when no GPU is free it gracefully falls back to CPU.
+  3. Optionally adjust env variables:
+     - `UNSAMV2_CKPT`: absolute path to the `.pt` weight file (defaults to `sam2/checkpoints/unsamv2_plus_ckpt.pt`).
+     - `UNSAMV2_DEVICE`: `"cpu"`, `"cuda"`, or `"auto"` (default). Keep `auto` for ZeroGPU so it switches when a GPU arrives.
+     - `UNSAMV2_ZEROGPU_DURATION`: seconds to hold the leased GPU per request (default `60`).
+  4. Rebuild the Space—once live you can interactively click foreground/background points, slide granularity, and export masks directly from the browser.
 
 ## Installation ⚙️
 We provide installation instructions [here](INSTALL.md).
