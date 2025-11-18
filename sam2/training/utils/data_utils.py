@@ -167,8 +167,6 @@ def collate_fn(
     granularities = torch.stack([
             torch.tensor(granularities, dtype=torch.float32) for granularities in step_t_granularities
         ], dim=0)
-    # granularities = torch.tensor(step_t_granularities, dtype=torch.float32)
-    # granularities = torch.stack([torch.stack(granularities, dim=0) for granularities in step_t_granularities], dim=0)
     
     objects_identifier = torch.stack(
         [torch.stack(id, dim=0) for id in step_t_objects_identifier], dim=0

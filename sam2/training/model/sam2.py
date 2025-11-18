@@ -16,7 +16,6 @@ from sam2.modeling.sam2_utils import (
     get_next_point,
     sample_box_points,
     select_closest_cond_frames,
-    graco_sample,
 )
 
 from sam2.utils.misc import concat_points
@@ -25,9 +24,6 @@ from training.utils.data_utils import BatchedVideoDatapoint
 
 import os
 import sys
-
-from training.utils.graco.graco_sample import graco_sample_optimized
-
 
 
 class SAM2Train(SAM2Base):
@@ -529,23 +525,12 @@ class SAM2Train(SAM2Base):
             # pred_for_new_pt = None if sample_from_gt else (high_res_masks > 0)
             pred_for_new_pt = high_res_masks > 0
 
-            # GraCo's correction points sample method
             prev_points_input = all_point_inputs[-1]
-            if self.training:
-                new_points, new_labels = graco_sample(
-                    gt_masks=gt_masks,
-                    pred_masks=pred_for_new_pt,
-                    mode = "train",
-                )
-            else:
-                new_points, new_labels = graco_sample_optimized(
-                    gt_masks=gt_masks,
-                    pred_masks=pred_for_new_pt,
-                    mode="eval",
-                    click_indx=click_indx,
-                    prev_points_input=prev_points_input,
-                )
-
+            new_points, new_labels = get_next_point(
+                gt_masks=gt_masks,
+                pred_masks=pred_for_new_pt,
+                method="uniform" if self.training else self.pt_sampling_for_eval,
+            )
             point_inputs = concat_points(point_inputs, new_points, new_labels)
             # Feed the mask logits of the previous SAM outputs in the next SAM decoder step.
             # For tracking, this means that when the user adds a correction click, we also feed
