@@ -45,7 +45,7 @@ bash run_gra_dico.sh
 
 ### 2. Segment Anything at Any Granularity 🔥
 
-If you want to run UnSAMv2 or UnSAMv2+ locally, we provide tutorial notebooks for different tasks, please download UnSAMv2/UnSAMv2+ checkpoints from the [model zoo](#model-zoo).
+We host UnSAMv2 model on HuggingFace, feel free to try it out [here](https://huggingface.co/spaces/yujunwei04/UnSAMv2). If you want to run UnSAMv2 or UnSAMv2+ locally, we provide tutorial notebooks for different tasks, please download UnSAMv2/UnSAMv2+ checkpoints from the [model zoo](#model-zoo).
 
 ### UnSAMv2: Inference Demo for Interative Image Segmentation
 <div align="center">
