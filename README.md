@@ -28,6 +28,21 @@
 ## News 🎉
 - 11/17/2025: We released UnSAMv2.
 
+## Demo
+We host our model on HuggingFace space, feel free to try our [UnSAMv2 Demo](https://huggingface.co/spaces/yujunwei04/UnSAMv2)! UnSAMv2 support granularity control for interactive image segmentation, whole image segmentation, and video segmentation.
+
+1. Interactive Segmentation: 
+Add point prompts and granularity scaler first, and click segment to run inference. Click the little cross icon on the top-right corner if you want to try your own image!
+![alt text](assets/hf_int.png)
+
+2. Whole Image Segmentation: 
+UnSAMv2 supports to find all instance at a given granularity score in images. Click "generate masks" to run inference.
+![alt text](assets/hf_whole_seg.png)
+
+3. Video Segmentation:
+UnSAMv2 can propagate mask at your desired granularity across video frames! Firstly, add point prompts and granularity and click "segment frame". Then, we can propagate the mask to later frames by clicking "propagate video."
+![alt text](assets/hf_video.png)
+
 ## Installation ⚙️
 We provide installation instructions [here](INSTALL.md).
 
@@ -45,7 +60,7 @@ bash run_gra_dico.sh
 
 ### 2. Segment Anything at Any Granularity 🔥
 
-We host UnSAMv2 model on HuggingFace, feel free to try it out [here](https://huggingface.co/spaces/yujunwei04/UnSAMv2). If you want to run UnSAMv2 or UnSAMv2+ locally, we provide tutorial notebooks for different tasks, please download UnSAMv2/UnSAMv2+ checkpoints from the [model zoo](#model-zoo).
+We host UnSAMv2 model on HuggingFace Space, feel free to try it out by following [demo](#demo). If you want to run UnSAMv2 or UnSAMv2+ locally, we provide tutorial notebooks for different tasks, please download UnSAMv2/UnSAMv2+ checkpoints from the [model zoo](#model-zoo).
 
 ### UnSAMv2: Inference Demo for Interative Image Segmentation
 <div align="center">
