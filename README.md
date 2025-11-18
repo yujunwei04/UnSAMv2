@@ -64,10 +64,11 @@ We provide the tutorial notebook for running UnSAMv2's whole image segmentation 
 
 ### UnSAMv2: Inference Demo for Video Segmentation
 
-We provide the tutorial notebook for running UnSAMv2's video segmentation [here](sam2/notebooks/video_segmentation.ipynb).
 <div align="center">
   <img src="./assets/video_demo.png" alt="" style="width: 100%; margin: 10px 0;">
 </div>
+
+We provide the tutorial notebook for running UnSAMv2's video segmentation [here](sam2/notebooks/video_segmentation.ipynb).
 
 ## Model Zoo 🥳
 
