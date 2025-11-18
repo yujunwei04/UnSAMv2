@@ -70,7 +70,7 @@ We provide the tutorial notebook for running UnSAMv2's whole image segmentation 
 
 We provide the tutorial notebook for running UnSAMv2's video segmentation [here](sam2/notebooks/video_segmentation.ipynb).
 
-## Model Zoo 🥳
+## Model Zoo
 
 UnSAMv2 achieves state-of-the-art performance on interactive segmentation and whole image segmentation by finetuning SAM-2 with pseudo-labeled mask-granularity pairs on 6,000 images. 
 
