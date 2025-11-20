@@ -121,4 +121,13 @@ If you find our work inspiring or use our codebase in your research, please cons
   journal={arXiv preprint arXiv:2511.13714},
   year={2025}
 }
+
+@article{wang2024segment,
+  title={Segment anything without supervision},
+  author={Wang, XuDong and Yang, Jingfeng and Darrell, Trevor},
+  journal={Advances in Neural Information Processing Systems},
+  volume={37},
+  pages={138731--138755},
+  year={2024}
+}
 ```
