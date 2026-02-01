@@ -1,0 +1,10 @@
+EXPS_PATH: "./outputs"
+
+# Evaluation datasets, replace the path with your own path
+GRABCUT_PATH: "/home/yujunwei/sam2/GraCo/isegm/data/datasets/GrabCut"
+BERKELEY_PATH: "/home/yujunwei/sam2/GraCo/isegm/data/datasets/Berkeley"
+DAVIS_PATH: "/home/yujunwei/sam2/GraCo/isegm/data/datasets/DAVIS"
+PARTIMAGENET_PATH: "/home/yujunwei/sam2/GraCo/isegm/data/datasets/PartImageNet_Seg/PartImageNet"
+SA1B_PATH: "/home/yujunwei/sam2/GraCo/isegm/data/datasets/sa1b"
+PASCALPART_PATH: "/home/yujunwei/sam2/GraCo/isegm/data/datasets/PascalPart"
+SBD_PATH: "/home/yujunwei/sam2/GraCo/isegm/data/datasets/SBD_benchmark_RELEASE/dataset"

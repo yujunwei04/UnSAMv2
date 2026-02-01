@@ -102,7 +102,15 @@ For whole image segmentation, we report Average Recall (AR) on 5 datasets: COCO,
 | UnSAMv2 | [Download](https://drive.google.com/file/d/1iYmYFeJxY4aI1lG5F2ZFL8tzzyGkCgX0/view?usp=sharing) | 2.28 | 3.40 | 79.3 | 68.3 |
 | UnSAMv2+ | [Download](https://drive.google.com/file/d/1M56QN2CWfou7h5azxJvc_igmbQh9D2af/view?usp=sharing) | 2.07 | 3.10 | 81.7 | 74.1 |
 
-## Evaluation 😎 (Coming soon)
+## Evaluation 😎
+
+### Interactive Segmentation
+Download corresponding datasets and specify the data path [here](evaluation/interactive/config.yml)
+Then run the evaluation
+```
+cd evaluation/interactive
+bash sam2_eval.sh
+```
 
 <!-- ## License 📋 -->
 
