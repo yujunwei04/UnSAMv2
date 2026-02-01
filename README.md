@@ -112,6 +112,18 @@ cd evaluation/interactive
 bash sam2_eval.sh
 ```
 
+### Whole Image Segmentation
+Download corresponding dataset and run inference script to get coco style annotations
+```
+cd ./evaluation/whole_image
+bash run_coco_annotator.sh
+```
+Then we can get numbers by running
+```
+cd ./evaluation/whole_image
+bash evaluate.sh
+```
+
 <!-- ## License 📋 -->
 
 ## Acknowledgements 🙏
