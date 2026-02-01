@@ -105,7 +105,7 @@ For whole image segmentation, we report Average Recall (AR) on 5 datasets: COCO,
 ## Evaluation 😎
 
 ### Interactive Segmentation
-Download corresponding datasets and specify the data path [here](evaluation/interactive/config.yml)
+Download corresponding datasets and specify the data path [here](evaluation/interactive/config.yml).
 Then run the evaluation
 ```
 cd evaluation/interactive
