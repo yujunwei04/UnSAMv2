@@ -444,7 +444,7 @@ class SAM2ImagePredictor:
             for feat_level in self._features["high_res_feats"]
         ]
         if gra is not None:
-            # print("sparse_embedding_shape:", sparse_embeddings.shape)
+            granularity_emb = self.model.embed_granularity(granularity) if granularity is not None else None
             low_res_masks, iou_predictions, _, _ = self.model.sam_mask_decoder(
                 image_embeddings=self._features["image_embed"][img_idx].unsqueeze(0),
                 image_pe=self.model.sam_prompt_encoder.get_dense_pe(),
@@ -453,8 +453,7 @@ class SAM2ImagePredictor:
                 multimask_output=multimask_output,
                 repeat_image=batched_mode,
                 high_res_features=high_res_features,
-                # granularity_embeddings=self.model.embed_granularity(granularity),
-                # granularity_embeddings=self.model.granularity_forward(self.model.embed_granularity(granularity))
+                granularity_embeddings=granularity_emb,
             )
             # print(f"DEBUG: iou_predictions={iou_predictions.shape}")
         else:
@@ -473,22 +472,9 @@ class SAM2ImagePredictor:
             low_res_masks, self._orig_hw[img_idx]
         )
         low_res_masks = torch.clamp(low_res_masks, -32.0, 32.0)
-        
-        # Apply dynamic threshold adjustment if granularity is provided and threshold_mlp exists
-        if granularity is not None and hasattr(self.model, 'threshold_mlp') and self.model.threshold_mlp is not None:
-            # Ensure granularity is on the same device as the model
-            granularity = granularity.to(self.device)
-            # Get dynamic threshold t(g) from granularity
-            t_g = self.model.threshold_mlp(granularity)  # [N, 1, 1, 1]
-            # Convert to logit threshold and adjust masks (consistent with loss_fns.py)
-            threshold_logits = torch.logit(t_g.squeeze(-1).squeeze(-1))  # [N, 1]
-            masks = masks - threshold_logits.unsqueeze(-1)  # Subtract threshold logits
 
         if not return_logits:
-            if granularity is not None and hasattr(self.model, 'threshold_mlp') and self.model.threshold_mlp is not None:
-                masks = masks > 0  # Apply threshold at 0 after adjustment
-            else:
-                masks = masks > self.mask_threshold
+            masks = masks > self.mask_threshold
         return masks, iou_predictions, low_res_masks
 
     def get_image_embedding(self) -> torch.Tensor:

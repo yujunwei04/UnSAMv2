@@ -14,7 +14,6 @@ from sam2.modeling.sam.mask_decoder import MaskDecoder
 from sam2.modeling.sam.prompt_encoder import PromptEncoder
 from sam2.modeling.sam.transformer import TwoWayTransformer, LoRAConfig
 from sam2.modeling.sam2_utils import get_1d_sine_pe, MLP, select_closest_cond_frames
-from sam2.granularity_embedding import FourierEmbedder 
 from sam2.modeling.sam.gra_mask_decoder import MaskDecoderGra
 
 # a large negative value as a placeholder score for missing objects
@@ -191,8 +190,6 @@ class SAM2Base(torch.nn.Module):
         self.max_cond_frames_in_attn = max_cond_frames_in_attn
 
 
-        self.fourier_embedder = FourierEmbedder(hidden_dim=self.fourier_dim, temperature=self.temperature)
-
         # Model compilation
         if compile_image_encoder:
             # Compile the forward function (not the full module) to allow loading checkpoints.
@@ -209,6 +206,20 @@ class SAM2Base(torch.nn.Module):
     @property
     def device(self):
         return next(self.parameters()).device
+
+    def embed_granularity(self, granularity):
+        """
+        Embed granularity values using the prompt encoder's granularity embedding.
+        
+        Args:
+            granularity: Tensor of granularity values
+            
+        Returns:
+            Tensor of granularity embeddings
+        """
+        if hasattr(self.sam_prompt_encoder, 'use_gra') and self.sam_prompt_encoder.use_gra:
+            return self.sam_prompt_encoder._embed_gra(granularity)
+        return None
 
     def forward(self, *args, **kwargs):
         raise NotImplementedError(

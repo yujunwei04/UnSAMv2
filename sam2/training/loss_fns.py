@@ -149,10 +149,6 @@ class MultiStepMultiMasksAndIous(nn.Module):
         pred_obj_scores=False,
         focal_gamma_obj_score=0.0,
         focal_alpha_obj_score=-1,
-        use_threshold_adjustment=False,
-        threshold_mlp_hidden_dim=64,
-        threshold_mlp_layers=2,
-        threshold_mlp_dropout=0.1,
     ):
         """
         This class computes the multi-step multi-mask and IoU losses.

@@ -147,7 +147,6 @@ trainer:
     temperature: 100
     fourier_dim: 128
     lora_rank: 8
-    use_threshold_adjustment: False
 
     num_maskmem: 7
     image_size: 1024
