@@ -124,7 +124,9 @@ cd ./evaluation/whole_image
 bash evaluate.sh
 ```
 
-<!-- ## License 📋 -->
+## License 📋
+
+This project is licensed under the [Apache License 2.0](./LICENSE).
 
 ## Acknowledgements 🙏
 This codebase is built on [UnSAM](https://github.com/frank-xwang/UnSAM), [SAM-2](https://github.com/facebookresearch/sam2), [CutLER](https://github.com/facebookresearch/CutLER), [DINOv3](https://github.com/facebookresearch/dinov3), [HQ-SAM](https://github.com/SysCV/sam-hq), and [GraCo](https://github.com/Zhao-Yian/GraCo). We sincerely appreciate the authors for open-sourcing their code.
