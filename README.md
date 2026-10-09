@@ -26,6 +26,7 @@
 </div>
 
 ## News 🎉
+- 10/9/2026: UnSAMv2 got accepted to TMLR with J2C certificate. We will present our work at ICLR 2027!
 - 11/17/2025: We released UnSAMv2.
 
 ## Demo
